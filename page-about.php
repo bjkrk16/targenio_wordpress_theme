@@ -8,16 +8,25 @@
     $page_id     = get_queried_object_id();
     if ( post_password_required($page_id) ) : 
         echo get_the_password_form();
-
     else:
+        if ( have_posts() ) :
+            while ( have_posts() ) : the_post(); ?>
+         
+                <article class="post container__content">
+                    <!-- <h2><a href="<?php // the_permalink() ?>"><?php // the_title() ?></a></h2> -->
+                    <?php the_content() ?>
+                </article>
+            
+            <?php endwhile; 
+        endif;
 ?>
 
-    <div class="about-container__hero-about">
-        <img src="<?php echo get_template_directory_uri(); ?>/dist/images/hero.jpg" alt="">
+    <!-- <div class="about-container__hero-about">
+        <img src="<?php // echo get_template_directory_uri(); ?>/dist/images/hero_2.jpg" alt="">
         <h2 class="hero-about__headline">Die Digitalisierung <br>von Unternehmen <br>sinnvoll unterstützen</h2>
-    </div>
+    </div> -->
 
-    <div class="about-container__text">
+    <!-- <div class="about-container__text">
         <p>Als Business Analysten, Softwareentwickler und IT-Berater begleiten wir unsere Kunden aus Branchen wie Automotive, Logistik, Luftfahrt, Touristik und Finanzdienstleistungen teilweise schon seit vielen Jahren  Mit targenio ermöglichen wir die Digitalisierung und Automatisierung von Geschäftsvorgängen entlang von Methoden und Techniken des  Business Process Management (BPM). Mit der Software targenio bieten wir dabei eine Alternative zu gängigen Standardsoftware-Systemen wie beispielsweise klassischen ERP-Lösungen. In der Regel mit dem Mehrwert, dass Automatisierung sehr viel schneller, flexibler und kundenindividueller umgesetzt werden kann – bei voller Integration in bestehende Umsysteme und dem Fokus, dezidierte Geschäftsvorgänge end-to-end abzubilden.</p>
     </div>
 
@@ -32,7 +41,7 @@
     <div class="about-container__profile-card-wrapper">
         <div class="profile-card">
             <div class="profile-card__img">
-                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/kolbenschlag_michael.jpg" alt="">
+                <img src="<?php // echo get_template_directory_uri(); ?>/dist/images/kolbenschlag_michael.jpg" alt="">
             </div>
             <div class="profile-card__info">
                 <div class="info__name">
@@ -43,7 +52,7 @@
                 </div>
                 <div class="info__social">
                     <a href="">
-                        <img src="<?php echo get_template_directory_uri(); ?>/dist/images/icon-awesome-linkedin.svg" alt="">
+                        <img src="<?php // echo get_template_directory_uri(); ?>/dist/images/icon-awesome-linkedin.svg" alt="">
                     </a>
                 </div>
                 <div class="info__descr">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</div>
@@ -62,7 +71,7 @@
                 </div>
                 <div class="info__social">
                     <a href="">
-                        <img src="<?php echo get_template_directory_uri(); ?>/dist/images/icon-awesome-linkedin.svg" alt="">
+                        <img src="<?php // echo get_template_directory_uri(); ?>/dist/images/icon-awesome-linkedin.svg" alt="">
                     </a>
                 </div>
                 <div class="info__descr">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</div>
@@ -70,18 +79,18 @@
         </div>
         <div class="profile-card">
             <div class="profile-card__img">
-                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/herrmann_holger.jpg" alt="">
+                <img src="<?php // echo get_template_directory_uri(); ?>/dist/images/herrmann_holger.jpg" alt="">
             </div>
             <div class="profile-card__info">
                 <div class="info__name">
                     <h4 class="profile-card-headline">
                         Holger Herrmann<br>
-                        <span>Leiter Softwareentwicklung</span>
+                        <span>Leiter Software&shy;entwicklung</span>
                     </h4>
                 </div>
                 <div class="info__social">
                     <a href="">
-                        <img src="<?php echo get_template_directory_uri(); ?>/dist/images/icon-awesome-linkedin.svg" alt="">
+                        <img src="<?php // echo get_template_directory_uri(); ?>/dist/images/icon-awesome-linkedin.svg" alt="">
                     </a>
                 </div>
                 <div class="info__descr">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</div>
@@ -91,7 +100,7 @@
 
     <div class="about-container__quote">
         <h3 class="quote-about" id="quote-about">Wir wollen Unternehmen die <br>Freiheit geben, Geschäftsvorgänge <br>nach Ihren individuellen <br>Bedürfnissen zu digitalisieren.</h3>
-        <!-- <h3 class="quote-about">Wir wollen Unternehmen &shy;die Freiheit geben, Geschäftsvorgänge &shy;nach Ihren individuellen &shy;Bedürfnissen zu digitalisieren.</h3> -->
+        <h3 class="quote-about">Wir wollen Unternehmen &shy;die Freiheit geben, Geschäftsvorgänge &shy;nach Ihren individuellen &shy;Bedürfnissen zu digitalisieren.</h3>
     </div>
 
     <div class="about-container__fact-blocks">
@@ -113,7 +122,7 @@
         <div class="fact-blocks__block">
             <h3>Fakt 006</h3>
         </div>
-    </div>
+    </div> -->
 
 <?php
     endif;
