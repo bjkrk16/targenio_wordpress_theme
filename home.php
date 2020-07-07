@@ -16,10 +16,11 @@
     // HERO 
     $type = 'hero';
     $cat = null;
+    $exlude_cat = 'Use Case';
     $amount = 0;
     $amount = ($type === 'post' ? 2 : 0);
     $amount = ($type === 'hero' ? 1 : 0);
-    $cat_id = get_cat_ID( $cat );
+    $cat_id = get_cat_ID( $exlude_cat );
     $cat_url = get_category_link( $cat_id );
     $excerpt_length = 512;
     if ($type === 'post') {
@@ -29,6 +30,7 @@
         );
     } else {
         $args = array(
+            'category__not_in' => array( $cat_id ),
             'posts_per_page' => $amount
         );
     }
