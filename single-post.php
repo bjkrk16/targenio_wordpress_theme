@@ -11,7 +11,21 @@ if ( have_posts() ) :
         </div>
         <?php endif; ?>
         <article class='single-post-layout'>
-            <?php $category = get_the_category(); ?>
+            <?php 
+                $category = get_the_category(); 
+                // Hide the authors info DOM node.
+                $hide_author_info = false;
+                // print("<pre>".print_r($category,true)."</pre>"); 
+                if ($category[1] && $category[1]->category_nicename === "use-case") {
+                    $parent_category = $category[1]; 
+                    // echo "$parent_category->category_nicename";
+                    $hide_author_info = true;
+                } else {
+                    // echo "no category parent";
+                    $hide_author_info = false;
+                }
+                
+            ?>
             <div class="single-post-layout__title">
                 <p class="title__category typo__single-post-title-category"><?php echo $category[0]->name; ?></p>
                 <h2><?php the_title(); ?></h2>
@@ -26,6 +40,8 @@ if ( have_posts() ) :
                 $share_body_link = str_replace( ' ', '%20', esc_url(get_the_permalink()) );
                 $share_body = $share_body_prefix . $share_body_link;
             ?>
+            
+            <?php if(!$hide_author_info): ?>
             <div class="single-post-layout__info">
                 <div class="info-wrapper">
                     <a href="<?php echo esc_url(get_author_posts_url( $author_id )); ?>">
@@ -40,6 +56,7 @@ if ( have_posts() ) :
                 </div>
                 <a class="info__share" href="mailto:?subject=<?php echo $share_subject ?>&amp;body=<?php echo $share_body ?>" class="single-post-layout__share">Artikel verschicken</a>    
             </div>
+            <?php endif; ?>
             <!-- <button class="copy-to-clipboard">Copy</button> -->
             <?php the_content(); ?>
         </article>
