@@ -15,7 +15,7 @@ if ( have_posts() ) :
                 $category = get_the_category(); 
                 // Hide the authors info DOM node.
                 $hide_author_info = false;
-                print("<pre>".print_r($category,true)."</pre>"); 
+                // print("<pre>".print_r($category,true)."</pre>"); 
                 if ($category[1] && $category[0]->category_parent > 0) {
                     // $parent_category = $category[1]; 
                     // echo "$parent_category->category_nicename";
