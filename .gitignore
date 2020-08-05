@@ -1,7 +1,3 @@
 node_modules
 
-dist
-
-bundled
-
 .DS_Store
